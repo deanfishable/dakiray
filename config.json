@@ -1,0 +1,49 @@
+{
+    "log": {
+        "access":"/dev/null",
+        "error":"/dev/null",
+        "loglevel":"warning"
+    },
+    "dns": {
+        "servers": [
+            "https+local://8.8.8.8/dns-query"
+        ]
+    },
+    "inbounds": [
+        {
+            "port": 8080,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "54f87cfd-6c03-45ef-bb3d-9fdacec80a9a"
+                    }
+                ],
+                "decryption": "none" 
+            },
+            "streamSettings": {
+                "network": "ws",
+                "wsSettings": {
+                    "path": "/app"
+                }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ]
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct",
+            "settings": {
+                "domainStrategy": "UseIPv4"
+            }
+        }
+    ]
+}
